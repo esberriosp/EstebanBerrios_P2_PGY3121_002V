@@ -30,44 +30,45 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <form id="form1" name="form1" action="#">
+            <div class="col-md-12">
+                <form id="formulariocontacto">
                     <fieldset>
                         <legend>Formulario de contacto</legend>
                         <div class="form-group">
-                            <label id="nombre" for="nombreUsuario">Nombre</label>
+                            <label for="nombreUsuario">Nombre</label>
                             <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario"
                                 placeholder="Ingrese su nombre..."></input>
                             <br />
-                            <label for="correoElectronico">Correo electrónico</label>
+                            <label for="correoElectronico">Direccion de correo</label>
                             <input type="email" class="form-control" id="correoElectronico" name="correoElectronico"
-                                placeholder="Ingrese su email..."></input>
+                                placeholder="Ingrese su correo..."></input>
                             <br />
+
                             <label for="numeroTelefono">Teléfono de contacto</label>
                             <input type="tel" class="form-control" id="numeroTelefono" name="numeroTelefono"
-                                placeholder="Ingrese número telefónico..."></input>
+                                placeholder="Ingrese su teléfono de contacto..."></input>
                             <br />
                             <div class="form-group">
                                 <label for="id_region">Seleccione su región:</label>
                                 <select id="id_region" class="form-control">
                                     <option value="0">Seleccione una región...</option>
                                 </select>
-                                <br />
+                                <br>
                                 <label for="id_provincia">Seleccione su provincia:</label>
                                 <select id="id_provincia" class="form-control">
                                     <option value="0">Seleccione una provincia...</option>
                                 </select>
-                                <br />
+                                <br>
                                 <label for="id_comuna">Seleccione su comuna:</label>
                                 <select id="id_comuna" class="form-control">
                                     <option value="0">Seleccione una comuna...</option>
                                 </select>
-                                <br />
+                                <br>
                                 <label for="textarea" class="form-label">Mensaje de contacto</label>
                                 <textarea class="form-control" id="textarea" rows="5"></textarea>
                                 <br />
-                                <input type="submit" value="Enviar"></input>
                                 <input type="reset" value="Limpiar"></input>
+                                <input type="submit" value="Enviar"></input>
                             </div>
                         </div>
                     </fieldset>
@@ -77,6 +78,7 @@
             </div>
         </div>
     </div>
+
 
     <script>
         $('#formulariocontacto').submit(function (event) {
@@ -127,7 +129,8 @@
             <a class="navbar-brand" href="../html/sistema_alerta.html">Sistema Alerta</a>
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="../html/index.html">Inicio<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="../html/contacto.html">Contacto <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="../html/contacto.html">Contacto <span
+                        class="sr-only">(current)</span></a>
             </div>
         </nav>
     </footer>
