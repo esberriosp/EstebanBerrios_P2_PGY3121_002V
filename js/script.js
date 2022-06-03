@@ -3,6 +3,10 @@ function getBasePath(service) {
     return "https://chilealerta.com/api/query/?user=demo&select=" + service;
 }
 
+function getBasePathindex(service) {
+    return "https://chilealerta.com/api/query/?user=andr3iss&select=" + service +"&limit={1}";
+}
+
 function createRowDisaster(reference, magnitude, latitude, longitude, local_time) {
     return '<tr><td>' + reference + '</td><td>' + magnitude + '</td><td>' + latitude + '</td><td>' + longitude + '</td><td>' + local_time + '</td></tr>';
 }
