@@ -43,18 +43,21 @@
       <div div class="col-md-12 p-md-5">
         <div class="row">
           <div class="col-md-6 p-md-5" id="ultimos_sismos">
+            <h3>ÚLTIMOS SISMOS</h3>
 
           </div>
           <div class="col-md-6 p-md-5" id="Tsunamis">
+            <h3>TSUNAMIS</h3>
 
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 p-md-5" id="onemi">
+            <h3>ONEMI</h3>
 
           </div>
           <div class="col-md-6 p-md-5" id="ultimos_sismos_chile">
-
+            <h3>ÚLTIMOS SISMOS CHILE</h3>
           </div>
 
         </div>
@@ -63,37 +66,31 @@
     </div>
   </div>
   <script>
-    const ultimos_sismos = 'https://chilealerta.com/api/query/?user=andr3iss&select=ultimos_sismos&limit=1&country=Chile/'
-    fetch(ultimos_sismos)
-      .then(response => response.json())
-      .then(data => {
-        let element = document.getElementById('ultimos_sismos')
-        element.innerHTML = `<p>${data.reference}</p> <p>${data.magnitude}</p>`;
-      })
+    $.get('https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos&limit=1/',
+    function(data){
+      let element = document.getElementById('ultimos_sismos')
+        element.innerHTML = `<p>${data['ultimos_sismos'][0].reference}</p> <p>${data['ultimos_sismos'][0].magnitude}</p>`;
+    })
 
-    const Tsunamis = 'https://chilealerta.com/api/query/?user=andr3iss&select=Tsunamis&limit=1'
-    fetch(Tsunamis)
-      .then(response => response.json())
-      .then(data => {
-        let element = document.getElementById('Tsunamis')
-        element.innerHTML = `<p>${data.reference}</p> <p>${data.chilean_time}</p>`;
-      })
 
-    const onemi = 'https://chilealerta.com/api/query/?user=andr3iss&select=onemi&limit=1'
-    fetch(onemi)
-      .then(response => response.json())
-      .then(data => {
-        let element = document.getElementById('onemi')
-        element.innerHTML = `<p>${data.post_title}</p> <p>${data.chilean_time}</p>`;
-      })
+    $.get('https://chilealerta.com/api/query/?user=demo&select=tsunami_chile&limit=1/',
+    function(data){
+      let element = document.getElementById('Tsunamis')
+        element.innerHTML = `<p>${data['tsunami_chile'][0].reference}</p> <p>${data['tsunami_chile'][0].local_time}</p>`;
+    })
 
-    const ultimos_sismos_chile = 'https://chilealerta.com/api/query/?user=andr3iss&select=ultimos_sismos_chile&limit=1'
-    fetch(ultimos_sismos_chile)
-      .then(response => response.json())
-      .then(data => {
-        let element = document.getElementById('ultimos_sismos_chile')
-        element.innerHTML = `<p>${data.reference}</p> <p>${data.chilean_time}</p>`;
-      })
+    $.get('https://chilealerta.com/api/query/?user=demo&select=onemi&limit=1',
+    function(data){
+      let element = document.getElementById('onemi')
+        element.innerHTML = `<p>${data['onemi'][0].state}</p> <p>${data['onemi'][0].alert_region}</p>`;
+    })
+
+    $.get('https://chilealerta.com/api/query/?user=andr3iss&select=ultimos_sismos_chile&limit=1',
+    function(data){
+      let element = document.getElementById('ultimos_sismos_chile')
+        element.innerHTML = `<p>${data['ultimos_sismos_chile'][0].reference}</p> <p>${data['ultimos_sismos_chile'][0].magnitude}</p>`;
+    })
+    
   </script>
 
   <footer>
