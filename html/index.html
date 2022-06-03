@@ -43,21 +43,21 @@
       <div div class="col-md-12 p-md-5">
         <div class="row">
           <div class="col-md-6 p-md-5" id="ultimos_sismos">
-            <h3>ÚLTIMOS SISMOS</h3>
+            <h4>ÚLTIMOS SISMOS</h4>
 
           </div>
           <div class="col-md-6 p-md-5" id="Tsunamis">
-            <h3>TSUNAMIS</h3>
+            <h4>TSUNAMIS</h4>
 
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 p-md-5" id="onemi">
-            <h3>ONEMI</h3>
+            <h4>ONEMI</h4>
 
           </div>
           <div class="col-md-6 p-md-5" id="ultimos_sismos_chile">
-            <h3>ÚLTIMOS SISMOS CHILE</h3>
+            <h4>ÚLTIMOS SISMOS CHILE</h4>
           
           </div>
         </div>
@@ -66,7 +66,7 @@
     </div>
   </div>
   <script>
-    // 
+    
     $.get('https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos&limit=1/',
     function(data){
       let element = document.getElementById('ultimos_sismos')
