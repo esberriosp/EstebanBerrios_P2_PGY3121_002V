@@ -16,35 +16,60 @@ function createRowOnemiDisaster(state, post_title, alert_region, alert_date, url
 function createRowMundoDisaster(reference, magnitude, latitude, longitude, utc_time) {
     return '<tr><td>' + reference + '</td><td>' + magnitude + '</td><td>' + latitude + '</td><td>' + longitude + '</td><td>' + utc_time + '</td></tr>';
 }
-function enviarformulariovalidado() {
-    var nombre = document.getElementById('nombreUsuario');
-    var correo = document.getElementById('correoElectronico');
-    var telefono = document.getElementById('numeroTelefono');
-    var comuna = document.getElementById('id_comuna')
-    //var error = document.getElementById('error');
-    //error.style.color = 'red';
+function validarContacto(form1){
+    event.preventDefault();
+    
+    var nombre = formulario.form[1].value;
+    var correo = formulario.form[2].value;
+    var comuna = formulario.form[6].value;
 
-    //var mensajesError = [];
-
-    if (nombre.value === null || nombre.value === '') {
-        //mensajesError.push('Debes Ingresar tu nombre');
+    if(validarNombre(nombre)==false){
+        document.getElementById('nombreUsuario').focus();
+        alert('Debe ingresar un nombre.')
     }
-
-    if(correo.value === null || correo.value ===''){
-        //mensajesError.push('Debe ingresar al menos un correo');
+    else if(validarCorreo(correo)==false){
+        document.getElementById('correoElectronico').focus();
+        alert('Debe ingresar su correo.')
     }
-
-    if (!correo.value.includes('@gmail.com') || !correo.value.includes('@duocuc.cl') || !correo.value.includes('@profesor.duoc.cl')) {
-        //mensajesError.push('Dominio de correo electronico no permitido');
+    else if(validarTipoCorreo(correo)==false){
+        document.getElementById('correoElectronico').focus();
+        alert('Debe indicar una dirección de su correo.')
     }
-
-    if (comuna.value === null || comuna.value === ''|| comuna.value === 'Seleccione una comuna..') {
-        //mensajesError.push('Debes seleccionar una comuna');
+    else if(validarComuna(comuna)==false){
+        document.getElementById('#id_comuna').focus();
+        alert('Debe seleccionar una comuna.')
     }
-
-    error.innerHTML = mensajesError.join(',');
-
-
-    return false;
+    else{
+        alert('Se ha enviado correctamente.')
+    }
 }
+function validarNombre(nombre){
+    if(nombre == ''){
+        return false;
+    } else {
+        return true;
+    }
+}
+function validarCorreo(correo){
+    if(correo == ''){
+        return false;
+    } else {
+        return true;
+    }
+}
+function validarTipoCorreo(correo){
+    if(correo == '@gmail.com' || correo == '@duocuc.cl' || correo == '@profesor.duoc.cl'){
+        return true;
+    } else {
+        return false;
+    }
+}
+function validarComuna(comuna){
+    if(comuna == ''){
+        return false;
+    } else {
+        return true;
+    }
+}
+
 
