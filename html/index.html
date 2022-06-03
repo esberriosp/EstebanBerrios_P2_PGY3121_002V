@@ -92,7 +92,8 @@
       .then(response => response.json())
       .then(data => {
         let element = document.getElementById('ultimos_sismos_chile')
-        element.innerHTML = `<p>${data.reference}</p> <p>${data.chilean_time}</p>`;})
+        element.innerHTML = `<p>${data.reference}</p> <p>${data.chilean_time}</p>`;
+      })
   </script>
 
   <footer>
