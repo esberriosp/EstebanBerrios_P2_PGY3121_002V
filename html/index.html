@@ -68,10 +68,7 @@
       .then(response => response.json())
       .then(data => {
         let element = document.getElementById('ultimos_sismos')
-        element.innerHTML = `
-      <p>${data.reference}</p>
-      <p>${data.magnitude}</p>
-      `;
+        element.innerHTML = `<p>${data.reference}</p> <p>${data.magnitude}</p>`;
       })
 
     const Tsunamis = 'https://chilealerta.com/api/query/?user=andr3iss&select=Tsunamis&limit=1'
@@ -79,10 +76,7 @@
       .then(response => response.json())
       .then(data => {
         let element = document.getElementById('Tsunamis')
-        element.innerHTML = `
-      <p>${data.reference}</p>
-      <p>${data.chilean_time}</p>
-      `;
+        element.innerHTML = `<p>${data.reference}</p> <p>${data.chilean_time}</p>`;
       })
 
     const onemi = 'https://chilealerta.com/api/query/?user=andr3iss&select=onemi&limit=1'
@@ -90,10 +84,7 @@
       .then(response => response.json())
       .then(data => {
         let element = document.getElementById('onemi')
-        element.innerHTML = `
-      <p>${data.post_title}</p>
-      <p>${data.chilean_time}</p>
-      `;
+        element.innerHTML = `<p>${data.post_title}</p> <p>${data.chilean_time}</p>`;
       })
 
     const ultimos_sismos_chile = 'https://chilealerta.com/api/query/?user=andr3iss&select=ultimos_sismos_chile&limit=1'
@@ -101,13 +92,9 @@
       .then(response => response.json())
       .then(data => {
         let element = document.getElementById('ultimos_sismos_chile')
-        element.innerHTML = `
-      <p>${data.reference}</p>
-      <p>${data.chilean_time}</p>
-      `;
-      })
+        element.innerHTML = `<p>${data.reference}</p> <p>${data.chilean_time}</p>`;})
   </script>
-  
+
   <footer>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-xl-left">
       <a class="navbar-brand" href="../html/sistema_alerta.html">Sistema Alerta</a>
