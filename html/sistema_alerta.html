@@ -38,9 +38,9 @@
               <label for="id_alerta">Tipo de alerta:</label>
               <select id="id_alerta" class="form-control">
                 <option value="0">Seleccione un tipo de alerta…</option>
-                <option value="ultimos_sismos_chile">Últimos 15 terremotos</option>
-                <option value="tsunami_chile">Últimos 16 boletines de Tsunami</option>
-                <option value="onemi">Ultimas alertas e informaciones de Onemi</option>
+                <option value="ultimos_sismos_chile">Últimos 15 sismos en Chile</option>
+                <option value="tsunami_chile">Últimos 16 boletines de Tsunamis en Chile</option>
+                <option value="onemi">Últimas alertas e informaciones de Onemi</option>
                 <option value="ultimos_sismos">Últimos sismos en el Mundo</option>
               </select>
               <br>
@@ -52,7 +52,7 @@
     <div class="row">
       <div class="col-md-12">
         <table class="table" id="table_ultimos_sismos">
-          <thead>
+          <thead id="thead_disasters">
             <tr>
               <th scope="col">Referencia</th>
               <th scope="col">Magnitud</th>
@@ -73,43 +73,46 @@
       var alerta_value = $("#id_alerta").val();
       $.get(getBasePath(alerta_value),
         function (data) {
-          //console.log(data)
+          $("#tbody_disasters tr").remove();
           $("#tbody_disasters tr").remove();
           switch (alerta_value) {
-            case "ultimos_sismos_chile":
-              $.each(data.ultimos_sismos_chile, function (i, { reference, magnitude, latitude, longitude, local_time }) {
-                $("#tbody_disasters").append(createRowDisaster(reference, magnitude, latitude, longitude, local_time));
-              })
-              break;
             case "tsunami_chile":
+              $("#thead_disasters").empty().append('<tr><th scope="col">Referencia</th><th scope="col">Magnitud</th><th scope="col">Latitud</th><th scope="col">Longitud</th><th scope="col">Hora</th><</tr>');
               $.each(data.tsunami_chile, function (i, { reference, magnitude, latitude, longitude, local_time }) {
                 $("#tbody_disasters").append(createRowDisaster(reference, magnitude, latitude, longitude, local_time));
               })
               break;
+            case "ultimos_sismos_chile":
+              $("#thead_disasters").empty().append('<tr><th scope="col">Referencia</th><th scope="col">Magnitud</th><th scope="col">Latitud</th><th scope="col">Longitud</th><th scope="col">Hora</th><</tr>');
+              $.each(data.ultimos_sismos_chile, function (i, { reference, magnitude, latitude, longitude, local_time }) {
+                $("#tbody_disasters").append(createRowDisaster(reference, magnitude, latitude, longitude, local_time));
+              })
+              break;
             case "onemi":
-              $.each(data.onemi, function (i, { post_title, magnitude, latitude, longitude, alert_date }) {
-                $("#tbody_disasters").append(createRowAlert(post_title, magnitude, latitude, longitude, alert_date));
+              $("#thead_disasters").empty().append('<tr><th scope="col">Estado Alerta</th><th scope="col">Titulo</th><th scope="col">Region</th><th scope="col">Fecha</th><th scope="col">Url</th></tr>');
+              $.each(data.onemi, function (i, { state, post_title, alert_region, alert_date, url }) {
+                $("#tbody_disasters").append(createRowOnemiDisaster(state, post_title, alert_region, alert_date, url));
               })
               break;
             case "ultimos_sismos":
-              $.each(data.ultimos_sismos, function (i, { reference, magnitude, latitude, longitude, chilean_time }) {
-                $("#tbody_disasters").append(createRowDisaster(reference, magnitude, latitude, longitude, chilean_time));
+              $("#thead_disasters").empty().append('<tr><th scope="col">Referencia</th><th scope="col">Magnitud</th><th scope="col">Latitud</th><th scope="col">Longitud</th><th scope="col">Hora</th><</tr>');
+              $.each(data.ultimos_sismos, function (i, { reference, magnitude, latitude, longitude, utc_time }) {
+                $("#tbody_disasters").append(createRowMundoDisaster(reference, magnitude, latitude, longitude, utc_time));
               })
               break;
           }
         })
     })
-
   </script>
   <footer>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-xl-center">
-        <a class="navbar-brand" href="../html/sistema_alerta.html">Sistema Alerta</a>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="../html/index.html">Inicio<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="../html/contacto.html">Contacto <span class="sr-only">(current)</span></a>
-        </div>
+      <a class="navbar-brand" href="../html/sistema_alerta.html">Sistema Alerta</a>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="../html/index.html">Inicio<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="../html/contacto.html">Contacto <span class="sr-only">(current)</span></a>
+      </div>
     </nav>
-</footer>
+  </footer>
 </body>
 
 </html>
