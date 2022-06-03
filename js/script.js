@@ -16,7 +16,7 @@ function createRowOnemiDisaster(state, post_title, alert_region, alert_date, url
 function createRowMundoDisaster(reference, magnitude, latitude, longitude, utc_time) {
     return '<tr><td>' + reference + '</td><td>' + magnitude + '</td><td>' + latitude + '</td><td>' + longitude + '</td><td>' + utc_time + '</td></tr>';
 }
-function validarContacto(form1){
+function validarContacto(_forformulariocontacto){
     event.preventDefault();
     
     var nombre = formulario.form[1].value;
