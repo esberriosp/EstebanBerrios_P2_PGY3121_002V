@@ -66,7 +66,7 @@ function validarTipoCorreo(correo){
     }
 }
 function validarComuna(comuna){
-    if(comuna == '0'){
+    if(comuna == ''){
         return false;
     } else {
         return true;
