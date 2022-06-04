@@ -16,7 +16,8 @@ function createRowOnemiDisaster(state, post_title, alert_region, alert_date, url
 function createRowMundoDisaster(reference, magnitude, latitude, longitude, utc_time) {
     return '<tr><td>' + reference + '</td><td>' + magnitude + '</td><td>' + latitude + '</td><td>' + longitude + '</td><td>' + utc_time + '</td></tr>';
 }
-function validarContacto(_forformulariocontacto){
+function validarContacto(formulario){
+    // console.log(formulario.form);
     event.preventDefault();
     
     var nombre = formulario.form[1].value;
@@ -33,7 +34,7 @@ function validarContacto(_forformulariocontacto){
     }
     else if(validarTipoCorreo(correo)==false){
         document.getElementById('correoElectronico').focus();
-        alert('Debe indicar una dirección de su correo.')
+        alert('Debe indicar un dominio de su correo (gmail, duoc.cl o profesor.duoc.cl).')
     }
     else if(validarComuna(comuna)==false){
         document.getElementById('#id_comuna').focus();
